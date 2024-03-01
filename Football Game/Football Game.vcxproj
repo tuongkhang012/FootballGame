@@ -70,6 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\SDL2\SDL2_ttf-2.22.0\include;C:\SDL2\SDL2_mixer-2.8.0\include;C:\SDL2\SDL2_image-2.8.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDL2\SDL2_ttf-2.22.0\lib\x64;C:\SDL2\SDL2_mixer-2.8.0\lib\x64;C:\SDL2\SDL2_image-2.8.2\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -104,13 +108,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL2\SDL2_ttf-2.22.0\include;C:\SDL2\SDL2_mixer-2.8.0\include;C:\SDL2\SDL2_image-2.8.2\include;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL2\SDL2_ttf-2.22.0\lib\x64;C:\SDL2\SDL2_mixer-2.8.0\lib\x64;C:\SDL2\SDL2_image-2.8.2\lib\x64;C:\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,16 +134,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="asset\Ball.cpp" />
+    <ClCompile Include="asset\Button.cpp" />
+    <ClCompile Include="asset\Player.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainGame.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="scenes\MainGame.cpp" />
+    <ClCompile Include="scenes\MainMenu.cpp" />
+    <ClCompile Include="scenes\Result.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="asset\Ball.h" />
+    <ClInclude Include="asset\Button.h" />
+    <ClInclude Include="asset\Player.h" />
+    <ClInclude Include="asset\staticItem.h" />
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="IGameState.h" />
-    <ClInclude Include="MainGame.h" />
-    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="scenes\IGameState.h" />
+    <ClInclude Include="scenes\MainGame.h" />
+    <ClInclude Include="scenes\MainMenu.h" />
+    <ClInclude Include="scenes\Result.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
