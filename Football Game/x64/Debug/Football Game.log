@@ -1,2 +1,41 @@
-﻿  main.cpp
+﻿  MainGame.cpp
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(23,30): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/MainGame.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(24,30): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/MainGame.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(25,34): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/MainGame.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(26,35): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/MainGame.cpp')
+  
+  MainMenu.cpp
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(23,30): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/MainMenu.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(24,30): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/MainMenu.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(25,34): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/MainMenu.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(26,35): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/MainMenu.cpp')
+  
+  Result.cpp
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(23,30): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/Result.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(24,30): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/Result.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(25,34): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/Result.cpp')
+  
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.h(26,35): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'scenes/Result.cpp')
+  
+  Generating Code...
   Football Game.vcxproj -> D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\x64\Debug\Football Game.exe
