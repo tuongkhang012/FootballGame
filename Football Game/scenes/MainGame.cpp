@@ -6,27 +6,19 @@
 #include <iostream>
 
 MainGame::MainGame() {
-	this->ball = new Ball(SCREENWIDTH / 2, SCREENHEIGHT / 2, white);
-	playersA[0] = new Player(480, 200, blue);
-	playersA[1] = new Player(480, 300, blue);
-	playersA[2] = new Player(480, 400, blue);
-	playersA[3] = new Player(480, 500, blue);
-	playersB[0] = new Player(720, 200, red);
-	playersB[1] = new Player(720, 300, red);
-	playersB[2] = new Player(720, 400, red);
-	playersB[3] = new Player(720, 500, red);
+	ball = std::make_unique<Ball>(SCREENWIDTH / 2, SCREENHEIGHT / 2, white);
+	sticks[0] = std::make_unique<Stick>(150, 20, 1, true); // A1
+	sticks[1] = std::make_unique<Stick>(290, 20, 2, true); // A2
+	sticks[2] = std::make_unique<Stick>(430, 20, 3, false); // B3
+	sticks[3] = std::make_unique<Stick>(570, 20, 4, true); // A4
+	sticks[4] = std::make_unique<Stick>(710, 20, 4, false); // B4
+	sticks[5] = std::make_unique<Stick>(850, 20, 3, true); // B3
+	sticks[6] = std::make_unique<Stick>(990, 20, 2, false); // A2
+	sticks[7] = std::make_unique<Stick>(1130, 20, 1, false); // B1
 }
 
 MainGame::~MainGame() {
-	if (ball != nullptr)
-		delete ball;
-	for (int i = 0; i < playerNum; i++) {
-		if(playersA[i] != nullptr)
-			delete playersA[i];
 
-		if(playersB[i] != nullptr)
-			delete playersB[i];
-	}
 }
 
 void MainGame::handleEvents(SDL_Window* window, SDL_Renderer* renderer) {
@@ -44,64 +36,19 @@ void MainGame::handleEvents(SDL_Window* window, SDL_Renderer* renderer) {
 		case SDLK_RETURN:
 			game_manager->changeState(new Result());
 			break;
-		case SDLK_f:
-			if (cdA == 0) {
-				for (int i = 0; i < playerNum; i++) {
-					playersA[i]->kickBallForward();
-				}
-				cdA += 21;
-			}
-			break;
-		case SDLK_g:
-			if (cdA == 0) {
-				for (int i = 0; i < playerNum; i++) {
-					playersA[i]->kickBallBackward();
-				}
-				cdA += 21;
-			}
-			break;
-		case SDLK_SEMICOLON:
-			if (cdB == 0) {
-				for (int i = 0; i < playerNum; i++) {
-					playersB[i]->kickBallBackward();
-				}
-				cdB += 21;
-			}
-			break;
-		case SDLK_QUOTE:
-			if (cdB == 0) {
-				for (int i = 0; i < playerNum; i++) {
-					playersB[i]->kickBallForward();
-				}
-				cdB += 21;
-			}
-			break;
 		}
-
+		break;
 	}
 }
 
 void MainGame::update(SDL_Window* window, SDL_Renderer* renderer) {
-	this->ball->moveBall();
-	for (int i = 0; i < playerNum; i++) {
-		playersA[i]->kickAnimation(ball);
-		playersB[i]->kickAnimation(ball);
+	const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
-		playersA[i]->movePlayer();
-		playersB[i]->movePlayer();
-	}
-
-	if (cdA <= 0) {
-		cdA = 0;
-	}
-	else {
-		cdA--;
-	}
-	if (cdB <= 0) {
-		cdB = 0;
-	}
-	else {
-		cdB--;
+	ball->moveBall();
+	for (auto& stick : sticks) {
+		stick->checkCollision(ball.get());
+		stick->controlStick(keystate);
+		stick->movePlayer();
 	}
 }
 
@@ -110,9 +57,8 @@ void MainGame::render(SDL_Window* window, SDL_Renderer* renderer) {
 	SDL_RenderClear(renderer);
 
 	ball->drawBall(renderer);
-	for (int i = 0; i < playerNum; i++) {
-		playersA[i]->drawPlayer(renderer);
-		playersB[i]->drawPlayer(renderer);
+	for (auto& stick : sticks) {
+		stick->drawStick(renderer);
 	}
 
 	SDL_RenderPresent(renderer);

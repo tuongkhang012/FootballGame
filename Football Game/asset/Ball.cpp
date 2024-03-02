@@ -7,7 +7,7 @@ Ball::Ball(float x, float y, SDL_Color color) {
 	this->radius = 20;
 	this->speed = 2;
 	this->dx = -5;
-	this->dy = 0;
+	this->dy = 1;
 	this->color = color;
 }
 

@@ -137,6 +137,7 @@
     <ClCompile Include="asset\Ball.cpp" />
     <ClCompile Include="asset\Button.cpp" />
     <ClCompile Include="asset\Player.cpp" />
+    <ClCompile Include="asset\Stick.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="scenes\MainGame.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="asset\Button.h" />
     <ClInclude Include="asset\Player.h" />
     <ClInclude Include="asset\staticItem.h" />
+    <ClInclude Include="asset\Stick.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="scenes\IGameState.h" />
     <ClInclude Include="scenes\MainGame.h" />

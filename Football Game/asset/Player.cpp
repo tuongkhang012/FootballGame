@@ -5,16 +5,16 @@
 Player::Player(float x, float y, SDL_Color color) {
     this->x = x;
     this->y = y;
+    this->Ihitbox_x = x;
+    this->Ihitbox_y = y;
+    this->hitboxx = x;
+    this->hitboxy = y;
     this->radius = 40;
     this->color = color;
-    this->hitbox_x = x - radius/2;
-    this->hitbox_y = y - radius*3/4;
-    this->hitbox = { int(hitbox_x), int(hitbox_y), int(radius), int(radius*3/2)};
+    this->hitbox_radius = 25;
 }
 
 void Player::drawPlayer(SDL_Renderer* renderer) {
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-
     // 2 loops make a square
     for (int w = 0; w < radius * 2; w++)
     {
@@ -35,40 +35,45 @@ void Player::drawPlayer(SDL_Renderer* renderer) {
         }
     }
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderDrawRect(renderer, &hitbox);
+    //Draw hitbox
+    for (int w = 0; w < hitbox_radius * 2; w++)
+    {
+        for (int h = 0; h < hitbox_radius * 2; h++)
+        {
+            float dx = hitbox_radius - w; // horizontal offset
+            float dy = hitbox_radius - h; // vertical offset
+            if ((dx * dx + dy * dy) >= ((hitbox_radius - 2) * (hitbox_radius - 2)) && (dx * dx + dy * dy) <= (hitbox_radius * hitbox_radius))
+            {
+                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                SDL_RenderDrawPoint(renderer, hitboxx + dx, hitboxy + dy);
+            }
+            if ((dx * dx + dy * dy) < (hitbox_radius - 2) * (hitbox_radius - 2))
+            {
+                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+                SDL_RenderDrawPoint(renderer, hitboxx + dx, hitboxy + dy);
+            }
+        }
+    }
 }
 
 void Player::kickBallForward() {
     kickDuration = 10;
-    speed = 8;
+    dx = 1;
     _direction = true;
 }
 
 void Player::kickBallBackward() {
     kickDuration = 10;
-    speed = 8;
+    dx = -1;
     _direction = false;
 }
 
-float Player::getDistanceX(Ball* ball) {
-    float closestX = std::max(getX(), std::min(ball->getX(), getX() + getWidth()));
-    float distanceX = ball->getX() - closestX;
-    return distanceX;
-}
-
-float Player::getDistanceY(Ball* ball) {
-    float closestY = std::max(getY(), std::min(ball->getY(), getY() + getWidth()));
-    float distanceY = ball->getY() - closestY;
-    return distanceY;
-}
-
 void Player::checkCollision(Ball* ball, bool kicking) {
-    float distanceX = getDistanceX(ball);
-    float distanceY = getDistanceY(ball);
+    float distanceX = ball->getX() - hitboxx;
+    float distanceY = ball->getY() - hitboxy;
 
     float distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
-    if (distanceSquared < ball->getRadius() * ball->getRadius()) {
+    if (distanceSquared < (ball->getRadius() + hitbox_radius) * (ball->getRadius()+hitbox_radius)) {
         ball->setDX(-ball->getDX());
         ball->setDY(-ball->getDY());
         if (kicking) {
@@ -81,39 +86,37 @@ void Player::checkCollision(Ball* ball, bool kicking) {
 }
 
 void Player::movePlayer() {
-	hitbox.x += dx*speed;
+    y += dy * speed;
+	hitboxx += dx * speed;
+    hitboxy += dy * speed;
 }
 
 void Player::kickAnimation(Ball* ball){
     //left = 0, right = 1
     if (kickDuration > 0 && _direction) {
-        dx = 1;
 		checkCollision(ball, true);
 		kickDuration--;
 	}
     else if (kickDuration > 0 && !_direction) {
-        dx = -1;
         checkCollision(ball, true);
         kickDuration--;
     }
     else{
-        if (_direction) {
-			dx = -1;
-            if (hitbox.x <= hitbox_x) {
-                speed = 0;
-                dx = 0;
-                hitbox.x = hitbox_x;
-            }
-		}
-        else {
-			dx = 1;
-            if (hitbox.x >= hitbox_x) {
-                speed = 0;
-                dx = 0;
-                hitbox.x = hitbox_x;
-            }
-		}
+        float distanceX = x - hitboxx;
+        float distanceY = y - hitboxy;
 
+        float distance = sqrt(distanceX * distanceX + distanceY * distanceY);
+
+        if (distance <= speed) {
+            dx = 0;
+            dy = 0;
+            hitboxx = x;
+            hitboxy = y;
+        }
+        else {
+            dx = distanceX / distance;
+            dy = distanceY / distance;
+        }
         checkCollision(ball, false);
     }
 }

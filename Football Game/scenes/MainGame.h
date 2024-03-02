@@ -6,7 +6,10 @@
 #include "IGameState.h"
 #include "../asset/staticItem.h"
 #include "../asset/Ball.h"
+#include "../asset/Stick.h"
 #include "../asset/Player.h"
+#include <array>
+#include <memory>
 
 class MainGame : public IGameState
 {
@@ -19,10 +22,8 @@ public:
 	void setGameManager(Game* game) { game_manager = game; }
 private:
 	const int playerNum = 4;
-	float cdA = 0, cdB = 0;
-	Ball* ball = nullptr;
-	Player* playersA[4];
-	Player* playersB[4];
+	std::unique_ptr<Ball> ball;
+	std::array<std::unique_ptr<Stick>, 8> sticks;
 	Game* game_manager = nullptr;
 };
 
