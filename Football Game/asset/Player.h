@@ -16,23 +16,19 @@ public:
 	void kickBallForward();
 	void kickBallBackward();
 	void kickAnimation(Ball* ball);
-	float getDistanceX(Ball* ball);
-	float getDistanceY(Ball* ball);
 
 	//getters and setters
-	float getX() { return hitbox.x; }
-	float getY() { return hitbox.y; }
-	float getWidth() { return hitbox.w; }
-	float getHeight() { return hitbox.h; }
+	void setDY(float dy) { this->dy = dy; }
+	float getNextPosition() { return y + dy*speed; }
+	float getRadius() { return radius; }
 private:
 	int kickDuration = 0;
 	bool _direction = true;
-	SDL_Rect hitbox;
 	float x, y;
-	float hitbox_x, hitbox_y;
+	float Ihitbox_x, Ihitbox_y, hitboxx, hitboxy;
 	float dx = 0, dy = 0;
-	float speed = 0;
-	float radius;
+	float speed = 8;
+	float radius, hitbox_radius;
 	SDL_Color color;
 };
 
