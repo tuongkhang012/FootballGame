@@ -6,6 +6,9 @@
 #include <SDL.h>
 #include "scenes/IGameState.h"
 #include "SDL_ttf.h"
+#include "SDL_image.h"
+#include "asset/staticItem.h"
+#include <vector>
 
 class Game {
 public:

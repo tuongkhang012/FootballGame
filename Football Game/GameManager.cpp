@@ -1,6 +1,16 @@
-#include <SDL.h>
 #include "GameManager.h"
 #include <iostream>
+
+//PlayerSprites: 0 for idle, 1 for highlight, 2 for kick
+std::vector<SDL_Texture*> player1sprites;
+//PlayerSprites: 0 for idle, 1 for highlight, 2 for kick
+std::vector<SDL_Texture*> player2sprites;
+//StickSprites: 0 for idle, 1 for highlight
+std::vector<SDL_Texture*> stick1sprites;
+//StickSprites: 0 for idle, 1 for highlight
+std::vector<SDL_Texture*> stick2sprites;
+
+TTF_Font* terminalFont;
 
 Game::Game() {
 	window = nullptr;
@@ -34,6 +44,28 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			isRunning = false;
 			return;
 		}
+		if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
+			std::cout << "Failed to initialize SDL_image!\n";
+		}
+
+		//Initialize the externs
+		//sprites
+		player1sprites.push_back(IMG_LoadTexture(renderer, "./artwork/player/p1.png"));
+		player1sprites.push_back(IMG_LoadTexture(renderer, "./artwork/player/p1_highlight.png"));
+		player1sprites.push_back(IMG_LoadTexture(renderer, "./artwork/player/p1_kick.png"));
+		
+		player2sprites.push_back(IMG_LoadTexture(renderer, "./artwork/player/p2.png"));
+		player2sprites.push_back(IMG_LoadTexture(renderer, "./artwork/player/p2_highlight.png"));
+		player2sprites.push_back(IMG_LoadTexture(renderer, "./artwork/player/p2_kick.png"));
+		
+		stick1sprites.push_back(IMG_LoadTexture(renderer, "./artwork/rod/rod1.png"));
+		stick1sprites.push_back(IMG_LoadTexture(renderer, "./artwork/rod/rod1_highlight.png"));
+		
+		stick2sprites.push_back(IMG_LoadTexture(renderer, "./artwork/rod/rod2.png"));
+		stick2sprites.push_back(IMG_LoadTexture(renderer, "./artwork/rod/rod2_highlight.png"));
+		//fonts
+		terminalFont = TTF_OpenFont("./font/Terminal.ttf", 46);
+
 		isRunning = true;
 	}
 	else {
@@ -64,5 +96,13 @@ void Game::render() {
 void Game::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
+	for(int i = 0; i < player1sprites.size(); i++) {
+		SDL_DestroyTexture(player1sprites[i]);
+	}
+	for (int i = 0; i < player2sprites.size(); i++) {
+		SDL_DestroyTexture(player2sprites[i]);
+	}
+	TTF_Quit();
+	IMG_Quit();
 	SDL_Quit();
 }

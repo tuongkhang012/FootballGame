@@ -4,11 +4,10 @@
 #include "../GameManager.h"
 
 MainMenu::MainMenu() {
-	this->terminalFont = TTF_OpenFont("./font/Terminal.ttf", 46);
 	this->startButton = new Button(SCREENWIDTH / 2 - 64, 100, 128, 42, 5, 5,
-		"START", this->terminalFont, black, white, teal, blue);
+		"START", terminalFont, black, white, teal, blue);
 	this->quitButton = new Button(SCREENWIDTH / 2 - 50, 200, 100, 42, 5, 5,
-		"QUIT", this->terminalFont, black, white, teal, blue);
+		"QUIT", terminalFont, black, white, teal, blue);
 }
 
 MainMenu::~MainMenu() {

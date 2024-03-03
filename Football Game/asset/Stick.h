@@ -10,7 +10,7 @@
 class Stick{
 	friend class Player;
 public:
-	Stick(int x, int w, int numberOfPlayers, bool whoControlling);
+	Stick(int x, int numberOfPlayers, bool whoControlling, const std::vector<SDL_Texture*>& sprites, int id);
 	~Stick();
 	void drawStick(SDL_Renderer* renderer);
 	void controlStick(const Uint8* keys);
@@ -21,14 +21,16 @@ public:
 	void kickBallBackward();
 	void checkCollision(Ball* ball);
 	void movePlayer();
-	int getX() { return rect.x; };
-	int getY() { return rect.y; };
 private:
-	SDL_Rect rect;
-	bool whoControlling, isControlled;
+	int x, y;
+	bool whoControlling, isControlled, backward = false;
+	int state = 0;
 	std::vector<std::unique_ptr<Player>> players;
+	std::vector<SDL_Texture*> sprites;
 	int playerCount;
 	int cdA = 0, cdB = 0;
+	int id = 0;
+	bool currCond = false, kicking = false;
 };
 
 #endif // !STICK_H

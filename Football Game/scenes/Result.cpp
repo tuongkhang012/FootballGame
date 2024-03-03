@@ -4,11 +4,10 @@
 #include "../GameManager.h"
 
 Result::Result() {
-	this->terminalFont = TTF_OpenFont("./font/Terminal.ttf", 46);
 	this->rematchButton = new Button(SCREENWIDTH / 2 - 64, 400, 128, 42, 5, 5,
-		"REMATCH", this->terminalFont, black, white, teal, blue);
+		"REMATCH", terminalFont, black, white, teal, blue);
 	this->titleButton = new Button(SCREENWIDTH / 2 - 50, 500, 100, 42, 5, 5,
-		"TITLE", this->terminalFont, black, white, teal, blue);
+		"TITLE", terminalFont, black, white, teal, blue);
 }
 
 Result::~Result() {

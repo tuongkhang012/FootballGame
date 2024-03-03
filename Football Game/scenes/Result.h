@@ -10,7 +10,6 @@
 class Result : public IGameState
 {
 private:
-	TTF_Font* terminalFont = nullptr;
 	Button* rematchButton = nullptr;
 	Button* titleButton = nullptr;
 	Game* game_manager = nullptr;

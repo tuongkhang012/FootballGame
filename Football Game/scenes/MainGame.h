@@ -22,6 +22,7 @@ public:
 	void setGameManager(Game* game) { game_manager = game; }
 private:
 	const int playerNum = 4;
+	bool stick1 = false, stick2 = false, stick3 = false, stick4 = false;
 	std::unique_ptr<Ball> ball;
 	std::array<std::unique_ptr<Stick>, 8> sticks;
 	Game* game_manager = nullptr;

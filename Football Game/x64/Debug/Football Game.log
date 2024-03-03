@@ -1,19 +1,10 @@
-﻿  Player.cpp
-D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.cpp(28,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.cpp(28,49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.cpp(33,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.cpp(33,49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.cpp(48,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.cpp(48,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.cpp(53,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Player.cpp(53,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Stick.cpp
+﻿  Stick.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'asset/Stick.cpp')
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56):
   the template instantiation context (the oldest one first) is
   	D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Stick.cpp(16,21):
-  	see reference to function template instantiation 'std::unique_ptr<Player,std::default_delete<Player>> std::make_unique<Player,int,int&,SDL_Color&,0>(int &&,int &,SDL_Color &)' being compiled
+  	see reference to function template instantiation 'std::unique_ptr<Player,std::default_delete<Player>> std::make_unique<Player,int,int&,std::vector<SDL_Texture *,std::allocator<SDL_Texture *>>&,0>(int &&,int &,std::vector<SDL_Texture *,std::allocator<SDL_Texture *>> &)' being compiled
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         with
@@ -22,19 +13,4 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.3351
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         ]
   (compiling source file 'asset/Stick.cpp')
   
-  MainGame.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         with
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         [
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:             _Ty=int
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         ]
-  (compiling source file 'scenes/MainGame.cpp')
-  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56):
-  the template instantiation context (the oldest one first) is
-  	D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\scenes\MainGame.cpp(9,14):
-  	see reference to function template instantiation 'std::unique_ptr<Ball,std::default_delete<Ball>> std::make_unique<Ball,int,int,const SDL_Color&,0>(int &&,int &&,const SDL_Color &)' being compiled
-  
-  MainMenu.cpp
-  Result.cpp
-  Generating Code...
   Football Game.vcxproj -> D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\x64\Debug\Football Game.exe
