@@ -1,8 +1,6 @@
 #include "Player.h"
-#include <iostream>
-#include <cmath>
 
-Player::Player(float x, float y, SDL_Color color) {
+Player::Player(float x, float y, const std::vector<SDL_Texture*>& sprites) {
     this->x = x;
     this->y = y;
     this->Ihitbox_x = x;
@@ -10,30 +8,35 @@ Player::Player(float x, float y, SDL_Color color) {
     this->hitboxx = x;
     this->hitboxy = y;
     this->radius = 40;
-    this->color = color;
     this->hitbox_radius = 25;
+    this->sprites = sprites;
 }
 
-void Player::drawPlayer(SDL_Renderer* renderer) {
-    // 2 loops make a square
-    for (int w = 0; w < radius * 2; w++)
-    {
-        for (int h = 0; h < radius * 2; h++)
-        {
-            float dx = radius - w; // horizontal offset
-            float dy = radius - h; // vertical offset
-            if ((dx * dx + dy * dy) >= ((radius - 2) * (radius - 2)) && (dx * dx + dy * dy) <= (radius * radius))
-            {
-                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-                SDL_RenderDrawPoint(renderer, x + dx, y + dy);
-            }
-            if ((dx * dx + dy * dy) < (radius - 2) * (radius - 2))
-            {
-                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-                SDL_RenderDrawPoint(renderer, x + dx, y + dy);
-            }
-        }
+Player::~Player() {
+
+}
+
+//0 for idle, 1 for highlight, 2 for kicking
+void Player::setSprite(int state) {
+	activeSprite = sprites[state];
+}
+
+void Player::drawPlayer(SDL_Renderer* renderer, int state, bool flip) {
+
+    SDL_Rect destRect;
+    destRect.x = x - radius;
+    destRect.y = y - radius;
+    setSprite(state);
+    SDL_QueryTexture(activeSprite, NULL, NULL, &destRect.w, &destRect.h);
+    destRect.w *= 2;
+    destRect.h *= 2;
+
+    SDL_RendererFlip _flip = SDL_FLIP_NONE;
+    if (flip) {
+        _flip = SDL_FLIP_HORIZONTAL;
     }
+
+    SDL_RenderCopyEx(renderer, activeSprite, NULL, &destRect, 0, NULL, _flip);
 
     //Draw hitbox
     for (int w = 0; w < hitbox_radius * 2; w++)
@@ -45,11 +48,6 @@ void Player::drawPlayer(SDL_Renderer* renderer) {
             if ((dx * dx + dy * dy) >= ((hitbox_radius - 2) * (hitbox_radius - 2)) && (dx * dx + dy * dy) <= (hitbox_radius * hitbox_radius))
             {
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-                SDL_RenderDrawPoint(renderer, hitboxx + dx, hitboxy + dy);
-            }
-            if ((dx * dx + dy * dy) < (hitbox_radius - 2) * (hitbox_radius - 2))
-            {
-                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
                 SDL_RenderDrawPoint(renderer, hitboxx + dx, hitboxy + dy);
             }
         }

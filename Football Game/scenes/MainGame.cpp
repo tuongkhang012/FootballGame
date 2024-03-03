@@ -7,14 +7,14 @@
 
 MainGame::MainGame() {
 	ball = std::make_unique<Ball>(SCREENWIDTH / 2, SCREENHEIGHT / 2, white);
-	sticks[0] = std::make_unique<Stick>(150, 20, 1, true); // A1
-	sticks[1] = std::make_unique<Stick>(290, 20, 2, true); // A2
-	sticks[2] = std::make_unique<Stick>(430, 20, 3, false); // B3
-	sticks[3] = std::make_unique<Stick>(570, 20, 4, true); // A4
-	sticks[4] = std::make_unique<Stick>(710, 20, 4, false); // B4
-	sticks[5] = std::make_unique<Stick>(850, 20, 3, true); // B3
-	sticks[6] = std::make_unique<Stick>(990, 20, 2, false); // A2
-	sticks[7] = std::make_unique<Stick>(1130, 20, 1, false); // B1
+	sticks[0] = std::make_unique<Stick>(150, 1, true, stick1sprites, 1); // A1
+	sticks[1] = std::make_unique<Stick>(290, 2, true, stick1sprites, 2); // A2
+	sticks[2] = std::make_unique<Stick>(430, 3, false, stick2sprites, 1); // B3
+	sticks[3] = std::make_unique<Stick>(570, 4, true, stick1sprites, 3); // A4
+	sticks[4] = std::make_unique<Stick>(710, 4, false, stick2sprites, 2); // B4
+	sticks[5] = std::make_unique<Stick>(850, 3, true, stick1sprites, 4); // A3
+	sticks[6] = std::make_unique<Stick>(990, 2, false, stick2sprites, 3); // B2
+	sticks[7] = std::make_unique<Stick>(1130, 1, false, stick2sprites, 4); // B1
 }
 
 MainGame::~MainGame() {
