@@ -50,8 +50,7 @@
               "RelativeToolTip": "Football Game\\scenes\\MainGame.h",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABgAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-03T16:05:07.284Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T16:05:07.284Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "Football Game\\scenes\\MainGame.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-03T14:16:07.957Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T14:16:07.957Z"
             },
             {
               "$type": "Document",
@@ -74,7 +72,7 @@
               "RelativeDocumentMoniker": "Football Game\\asset\\Stick.cpp",
               "ToolTip": "D:\\Center\\Documents\\3rd Year\\Game Development\\BTL\\Football Game\\Football Game\\asset\\Stick.cpp",
               "RelativeToolTip": "Football Game\\asset\\Stick.cpp",
-              "ViewState": "AQIAAKwAAAAAAAAAAAAAALMAAAAUAAAA",
+              "ViewState": "AQIAAKwAAAAAAAAAAAAAALcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-03T14:17:16.099Z",
               "EditorCaption": ""
@@ -89,8 +87,7 @@
               "RelativeToolTip": "Football Game\\asset\\Stick.h",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAACAAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-03T12:59:44.973Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T12:59:44.973Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "Football Game\\asset\\Player.cpp",
               "ViewState": "AQIAADYAAAAAAAAAAAAAADUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-03T12:48:38.806Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T12:48:38.806Z"
             },
             {
               "$type": "Document",
@@ -115,8 +111,7 @@
               "RelativeToolTip": "Football Game\\asset\\Player.h",
               "ViewState": "AQIAABgAAAAAAAAAAAAAACYAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-03T12:48:49.52Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T12:48:49.52Z"
             }
           ]
         }
