@@ -1,16 +1,33 @@
-﻿  Stick.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'asset/Stick.cpp')
-  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56):
-  the template instantiation context (the oldest one first) is
-  	D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\asset\Stick.cpp(16,21):
-  	see reference to function template instantiation 'std::unique_ptr<Player,std::default_delete<Player>> std::make_unique<Player,int,int&,std::vector<SDL_Texture *,std::allocator<SDL_Texture *>>&,0>(int &&,int &,std::vector<SDL_Texture *,std::allocator<SDL_Texture *>> &)' being compiled
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         with
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         [
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:             _Ty=int
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         ]
-  (compiling source file 'asset/Stick.cpp')
-  
-  Football Game.vcxproj -> D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\x64\Debug\Football Game.exe
+﻿  Ball.cpp
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Ball.cpp(37,18): warning C4305: '*=': truncation from 'double' to 'float'
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Ball.cpp(58,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Ball.cpp(58,49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Ball.cpp(63,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Ball.cpp(63,49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Button.cpp
+  Player.cpp
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Player.cpp(27,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Player.cpp(28,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Player.cpp(51,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Player.cpp(51,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Stick.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(3477,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\asset\Stick.cpp(16,21): message : see reference to function template instantiation 'std::unique_ptr<Player,std::default_delete<Player>> std::make_unique<Player,int,int&,std::vector<SDL_Texture *,std::allocator<SDL_Texture *>>&,0>(int &&,int &,std::vector<SDL_Texture *,std::allocator<SDL_Texture *>> &)' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(3477,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  GameManager.cpp
+  main.cpp
+  MainGame.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(3477,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Dell\Desktop\Game\Game2\FootballGame\Football Game\scenes\MainGame.cpp(9,14): message : see reference to function template instantiation 'std::unique_ptr<Ball,std::default_delete<Ball>> std::make_unique<Ball,int,int,const SDL_Color&,0>(int &&,int &&,const SDL_Color &)' being compiled
+  MainMenu.cpp
+  Result.cpp
+  Generating Code...
+  Football Game.vcxproj -> C:\Users\Dell\Desktop\Game\Game2\FootballGame\x64\Debug\Football Game.exe
