@@ -12,6 +12,7 @@ public:
 	~Ball();
 	void drawBall(SDL_Renderer* renderer);
 	void moveBall();
+	void resetBall();
 
 	// getters and setters
 	float getX() { return x; }
@@ -22,6 +23,8 @@ public:
 	float getSpeed() { return speed; }
 	void setDX(float dx) { this->dx = dx; }
 	void setDY(float dy) { this->dy = dy; }
+	void setX(float x) { this->x = x; }
+	void setY(float y) { this->y = y; }
 	void setSpeed(float speed) { this->speed = speed; }
 
 private:

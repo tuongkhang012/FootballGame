@@ -22,6 +22,22 @@ void Player::setSprite(int state) {
 }
 
 void Player::drawPlayer(SDL_Renderer* renderer, int state, bool flip) {
+    //Draw hitbox
+    if (false) {
+        for (int w = 0; w < hitbox_radius * 2; w++)
+        {
+            for (int h = 0; h < hitbox_radius * 2; h++)
+            {
+                float dx = hitbox_radius - w; // horizontal offset
+                float dy = hitbox_radius - h; // vertical offset
+                if ((dx * dx + dy * dy) >= ((hitbox_radius - 2) * (hitbox_radius - 2)) && (dx * dx + dy * dy) <= (hitbox_radius * hitbox_radius))
+                {
+                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    SDL_RenderDrawPoint(renderer, hitboxx + dx, hitboxy + dy);
+                }
+            }
+        }
+    }
 
     SDL_Rect destRect;
     destRect.x = x - radius;
@@ -37,33 +53,16 @@ void Player::drawPlayer(SDL_Renderer* renderer, int state, bool flip) {
     }
 
     SDL_RenderCopyEx(renderer, activeSprite, NULL, &destRect, 0, NULL, _flip);
-
-    //Draw hitbox
-    for (int w = 0; w < hitbox_radius * 2; w++)
-    {
-        for (int h = 0; h < hitbox_radius * 2; h++)
-        {
-            float dx = hitbox_radius - w; // horizontal offset
-            float dy = hitbox_radius - h; // vertical offset
-            if ((dx * dx + dy * dy) >= ((hitbox_radius - 2) * (hitbox_radius - 2)) && (dx * dx + dy * dy) <= (hitbox_radius * hitbox_radius))
-            {
-                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-                SDL_RenderDrawPoint(renderer, hitboxx + dx, hitboxy + dy);
-            }
-        }
-    }
 }
 
 void Player::kickBallForward() {
-    kickDuration = 10;
+    kickDuration = 7;
     dx = 1;
-    _direction = true;
 }
 
 void Player::kickBallBackward() {
-    kickDuration = 10;
+    kickDuration = 7;
     dx = -1;
-    _direction = false;
 }
 
 void Player::checkCollision(Ball* ball, bool kicking) {
@@ -72,8 +71,9 @@ void Player::checkCollision(Ball* ball, bool kicking) {
 
     float distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
     if (distanceSquared < (ball->getRadius() + hitbox_radius) * (ball->getRadius()+hitbox_radius)) {
-        ball->setDX(-ball->getDX());
-        ball->setDY(-ball->getDY());
+        Mix_PlayChannel(-1, kickSound, 0);
+        ball->setDX(-0.7*ball->getDX());
+        ball->setDY(-0.7*ball->getDY());
         if (kicking) {
             ball->setSpeed(5);
             ball->setDX(ball->getSpeed() * distanceX / sqrt(distanceSquared));
@@ -91,14 +91,10 @@ void Player::movePlayer() {
 
 void Player::kickAnimation(Ball* ball){
     //left = 0, right = 1
-    if (kickDuration > 0 && _direction) {
+    if (kickDuration > 0) {
 		checkCollision(ball, true);
 		kickDuration--;
 	}
-    else if (kickDuration > 0 && !_direction) {
-        checkCollision(ball, true);
-        kickDuration--;
-    }
     else{
         float distanceX = x - hitboxx;
         float distanceY = y - hitboxy;

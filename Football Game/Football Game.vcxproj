@@ -137,6 +137,7 @@
     <ClCompile Include="asset\Ball.cpp" />
     <ClCompile Include="asset\Button.cpp" />
     <ClCompile Include="asset\Player.cpp" />
+    <ClCompile Include="asset\Goal.cpp" />
     <ClCompile Include="asset\Stick.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="asset\Ball.h" />
     <ClInclude Include="asset\Button.h" />
+    <ClInclude Include="asset\Goal.h" />
     <ClInclude Include="asset\Player.h" />
     <ClInclude Include="asset\staticItem.h" />
     <ClInclude Include="asset\Stick.h" />

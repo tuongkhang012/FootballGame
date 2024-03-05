@@ -5,9 +5,9 @@ Ball::Ball(float x, float y, SDL_Color color) {
 	this->x = x;
 	this->y = y;
 	this->radius = 20;
-	this->speed = 2;
-	this->dx = -5;
-	this->dy = 1;
+	this->speed = 0;
+	this->dx = 0;
+	this->dy = 0;
 	this->color = color;
 }
 
@@ -19,15 +19,15 @@ void Ball::moveBall() {
 	float newX = x + dx * speed;
 	float newY = y + dy * speed;
 
-    if (newX - radius < 0 || newX + radius > SCREENWIDTH) {
-		dx = -dx;
+    if (newX - radius < 10 || newX + radius > SCREENWIDTH - 10) {
+		dx = -0.7*dx;
     }
     else {
         x = newX;
     }
 
-    if (newY - radius < 0 || newY + radius > SCREENHEIGHT) {
-        dy = -dy;
+    if (newY - radius < 10 || newY + radius > SCREENHEIGHT - 10) {
+        dy = -0.7*dy;
     }
     else {
         y = newY;
@@ -39,6 +39,15 @@ void Ball::moveBall() {
     if (speed < 0.04) {
 		speed = 0;
 	}
+}
+
+void Ball::resetBall() {
+    this->x = SCREENWIDTH/2;
+    this->y = SCREENHEIGHT/2;
+    this->radius = 20;
+    this->speed = 0;
+    this->dx = 0;
+    this->dy = 0;
 }
 
 void Ball::drawBall(SDL_Renderer* renderer) {
