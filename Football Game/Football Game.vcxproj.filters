@@ -42,6 +42,9 @@
     <ClCompile Include="asset\Stick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="asset\Goal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="asset\Stick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\Goal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

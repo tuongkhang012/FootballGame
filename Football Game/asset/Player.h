@@ -29,7 +29,6 @@ public:
 	float getRadius() { return radius; }
 private:
 	int kickDuration = 0;
-	bool _direction = true;
 	float x, y;
 	float Ihitbox_x, Ihitbox_y, hitboxx, hitboxy;
 	float dx = 0, dy = 0;

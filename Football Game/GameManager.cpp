@@ -9,8 +9,20 @@ std::vector<SDL_Texture*> player2sprites;
 std::vector<SDL_Texture*> stick1sprites;
 //StickSprites: 0 for idle, 1 for highlight
 std::vector<SDL_Texture*> stick2sprites;
-
+//Background
+SDL_Texture* background;
+SDL_Texture* titleScreen;
+//Music
+Mix_Music* titleScreenMusic;
+Mix_Music* gameMusic;
+Mix_Music* resultMusic;
+//Fonts
 TTF_Font* terminalFont;
+TTF_Font* terminalFontSmall;
+//Sound
+Mix_Chunk* kickSound;
+Mix_Chunk* clapSound;
+Mix_Chunk* whistleSound;
 
 Game::Game() {
 	window = nullptr;
@@ -47,6 +59,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
 			std::cout << "Failed to initialize SDL_image!\n";
 		}
+		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+			std::cout << "Failed to initialize SDL_mixer!\n";
+		}
 
 		//Initialize the externs
 		//sprites
@@ -63,8 +78,27 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		
 		stick2sprites.push_back(IMG_LoadTexture(renderer, "./artwork/rod/rod2.png"));
 		stick2sprites.push_back(IMG_LoadTexture(renderer, "./artwork/rod/rod2_highlight.png"));
+		
+		background = IMG_LoadTexture(renderer, "./artwork/background.png");
+		titleScreen = IMG_LoadTexture(renderer, "./artwork/titleScreen.png");
+
 		//fonts
 		terminalFont = TTF_OpenFont("./font/Terminal.ttf", 46);
+		terminalFontSmall = TTF_OpenFont("./font/Terminal.ttf", 26);
+
+		//music
+		titleScreenMusic = Mix_LoadMUS("./audio/music/Ghetto Patrol.mp3");
+		gameMusic = Mix_LoadMUS("./audio/music/Raise the Huddle.mp3");
+		resultMusic = Mix_LoadMUS("./audio/music/Party Time.mp3");
+
+		//sound
+		kickSound = Mix_LoadWAV("./audio/sound/SE_Knock_Soft_02.mp3");
+		clapSound = Mix_LoadWAV("./audio/sound/SE_Clap_01.mp3");
+		whistleSound = Mix_LoadWAV("./audio/sound/SE_Whistle_01.mp3");
+
+		Mix_VolumeChunk(kickSound, 10);
+		Mix_VolumeChunk(clapSound, 20);
+		Mix_VolumeChunk(whistleSound, 10);
 
 		isRunning = true;
 	}
@@ -102,6 +136,7 @@ void Game::clean() {
 	for (int i = 0; i < player2sprites.size(); i++) {
 		SDL_DestroyTexture(player2sprites[i]);
 	}
+	Mix_CloseAudio();
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();

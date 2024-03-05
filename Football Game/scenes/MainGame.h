@@ -8,6 +8,8 @@
 #include "../asset/Ball.h"
 #include "../asset/Stick.h"
 #include "../asset/Player.h"
+#include "../asset/Goal.h"
+#include "../asset/Button.h"
 #include <array>
 #include <memory>
 
@@ -20,12 +22,20 @@ public:
 	void update(SDL_Window* window, SDL_Renderer* renderer);
 	void render(SDL_Window* window, SDL_Renderer* renderer);
 	void setGameManager(Game* game) { game_manager = game; }
+	void renderScore(SDL_Renderer* renderer);
 private:
 	const int playerNum = 4;
-	bool stick1 = false, stick2 = false, stick3 = false, stick4 = false;
 	std::unique_ptr<Ball> ball;
 	std::array<std::unique_ptr<Stick>, 8> sticks;
 	Game* game_manager = nullptr;
+	std::unique_ptr<Goal> goal1, goal2;
+	int score1 = 0, score2 = 0;
+	bool isPaused = false, isScoring = false, isStarting = false,
+		isFinished = false, whoScored = false, isDone = false;
+	Button* continueButton = nullptr;
+	Button* resetButton = nullptr;
+	Button* titleButton = nullptr;
+	int flare = 120;
 };
 
 #endif

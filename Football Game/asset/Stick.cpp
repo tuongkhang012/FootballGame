@@ -13,7 +13,7 @@ Stick::Stick(int x, int numberOfPlayers, bool whoControlling, const std::vector<
 	for (int i = 0; i < numberOfPlayers; i++) {
 		std::vector<SDL_Texture*> temp = whoControlling ? player1sprites : player2sprites;
 		int yPos = SCREENHEIGHT / (numberOfPlayers + 1) * (i + 1);
-		players[i] = std::make_unique<Player>(x + 10, yPos, temp);
+		players[i] = std::make_unique<Player>(x, yPos, temp);
 	}
 }
 
@@ -24,7 +24,7 @@ Stick::~Stick() {
 void Stick::drawStick(SDL_Renderer* renderer) {
 	SDL_Rect destRect;
 	if(whoControlling){
-		destRect.x = x - 25;
+		destRect.x = x - 45;
 	}
 	else {
 		destRect.x = x - 35;
@@ -197,7 +197,7 @@ void Stick::controlStick(const Uint8* keys) {
 }
 
 void Stick::moveUp() {
-	if (players[0]->getNextPosition() - players[0]->getRadius() >= 0) {
+	if (players[0]->getNextPosition() - players[0]->getRadius() >= 10) {
 		for (int i = 0; i < playerCount; i++) {
 			players[i]->setDY(-1);
 		}
@@ -205,7 +205,7 @@ void Stick::moveUp() {
 }
 
 void Stick::moveDown() {
-	if (players[playerCount - 1]->getNextPosition() + players[playerCount - 1]->getRadius() <= SCREENHEIGHT) {
+	if (players[playerCount - 1]->getNextPosition() + players[playerCount - 1]->getRadius() <= SCREENHEIGHT - 10) {
 		for (int i = 0; i < playerCount; i++) {
 			players[i]->setDY(1);
 		}
