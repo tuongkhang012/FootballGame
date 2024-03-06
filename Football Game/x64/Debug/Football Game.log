@@ -1,13 +1,3 @@
-﻿  MainGame.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         with
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         [
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:             _Ty=int
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56): warning C4244:         ]
-  (compiling source file 'scenes/MainGame.cpp')
-  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3434,56):
-  the template instantiation context (the oldest one first) is
-  	D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\scenes\MainGame.cpp(16,14):
-  	see reference to function template instantiation 'std::unique_ptr<Ball,std::default_delete<Ball>> std::make_unique<Ball,int,int,const SDL_Color&,0>(int &&,int &&,const SDL_Color &)' being compiled
-  
+﻿  Result.cpp
+D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\Football Game\scenes\Result.cpp(37,3): warning C4060: switch statement contains no 'case' or 'default' labels
   Football Game.vcxproj -> D:\Center\Documents\3rd Year\Game Development\BTL\Football Game\x64\Debug\Football Game.exe
