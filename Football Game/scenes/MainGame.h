@@ -16,7 +16,7 @@
 class MainGame : public IGameState
 {
 public:
-	MainGame();
+	MainGame(bool is2Player);
 	~MainGame();
 	void handleEvents(SDL_Window* window, SDL_Renderer* renderer);
 	void update(SDL_Window* window, SDL_Renderer* renderer);
@@ -31,7 +31,7 @@ private:
 	std::unique_ptr<Goal> goal1, goal2;
 	int score1 = 0, score2 = 0;
 	bool isPaused = false, isScoring = false, isStarting = false,
-		isFinished = false, whoScored = false, isDone = false;
+		isFinished = false, whoScored = false, isDone = false, is2Player = false; // false = 1P, true = 2P
 	Button* continueButton = nullptr;
 	Button* resetButton = nullptr;
 	Button* titleButton = nullptr;

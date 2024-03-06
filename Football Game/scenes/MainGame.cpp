@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 
-MainGame::MainGame() {
+MainGame::MainGame(bool is2Player) {
 	this->continueButton = new Button(SCREENWIDTH / 2 - 102, 400, 204, 42, 5, 5,
 		"CONTINUE", terminalFont, black, white, teal, blue);
 	this->resetButton = new Button(SCREENWIDTH / 2 - 122, 500, 244, 42, 5, 5,
@@ -25,6 +25,7 @@ MainGame::MainGame() {
 	goal1 = std::make_unique<Goal>(0, 0, 80, 240, 240, true); //left
 	goal2 = std::make_unique<Goal>(SCREENWIDTH - 80, 0, 80, 240, 240, false); //right
 	isStarting = true;
+	this->is2Player = is2Player;
 }
 
 MainGame::~MainGame() {
@@ -91,6 +92,7 @@ void MainGame::handleEvents(SDL_Window* window, SDL_Renderer* renderer) {
 			game_manager->changeState(new Result(true));
 			break;
 		case SDLK_F2: //Debug score
+			if (score1 >= 3 || score2 >= 3) break;
 			score2++;
 			isScoring = true;
 			whoScored = false;
@@ -99,6 +101,7 @@ void MainGame::handleEvents(SDL_Window* window, SDL_Renderer* renderer) {
 			ball->resetBall();
 			break;
 		case SDLK_F3: //Debug score
+			if (score1 >= 3 || score2 >= 3) break;
 			score1++;
 			isScoring = true;
 			whoScored = true;
@@ -163,10 +166,26 @@ void MainGame::update(SDL_Window* window, SDL_Renderer* renderer) {
 			isFinished = true;
 		}
 
-		for (auto& stick : sticks) {
-			stick->checkCollision(ball.get());
-			stick->controlStick(keystate);
-			stick->movePlayer();
+		if (is2Player) {
+			for (auto& stick : sticks) {
+				stick->checkCollision(ball.get());
+				stick->controlStick(keystate);
+				stick->movePlayer();
+			}
+		}
+		else {
+			for (int i = 0; i < sticks.size(); ++i) {				
+				if (i != 2 && i != 4 && i != 6 && i != 7) {
+					sticks[i]->checkCollision(ball.get());
+					sticks[i]->controlStick(keystate);
+					sticks[i]->movePlayer();
+				}
+				else {
+					sticks[i]->checkCollision(ball.get());
+					sticks[i]->AIcontrolStick(ball.get());
+					sticks[i]->movePlayer();
+				}
+			}
 		}
 	}
 }

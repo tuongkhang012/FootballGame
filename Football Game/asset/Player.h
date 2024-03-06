@@ -22,7 +22,8 @@ public:
 	void kickBallForward();
 	void kickBallBackward();
 	void kickAnimation(Ball* ball);
-
+	float getX() { return x; }
+	float getY() { return y; }
 	//getters and setters
 	void setDY(float dy) { this->dy = dy; }
 	float getNextPosition() { return y + dy*speed; }

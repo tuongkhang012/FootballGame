@@ -56,6 +56,51 @@ void Stick::drawStick(SDL_Renderer* renderer) {
 	}
 }
 
+void Stick::AIcontrolStick(Ball* ball) {
+    // Find the nearest player to the ball
+    int nearestPlayerIndex = -1;
+    float minDistance = std::numeric_limits<float>::max();
+    
+    for (int i = 0; i < playerCount; ++i) {
+        float playerX = players[i]->getX();
+        float playerY = players[i]->getY();
+        float distance = sqrt((playerX - ball->getX()) * (playerX - ball->getX()) + (playerY - ball->getY()) * (playerY - ball->getY()));
+        
+        // Check if the player is nearest to the ball
+        if (distance < minDistance) {
+            minDistance = distance;
+            nearestPlayerIndex = i;
+        }
+    }
+
+    if (nearestPlayerIndex != -1) {
+        // Move the closest player up or down based on its position relative to the ball
+        float playerY = players[nearestPlayerIndex]->getY();
+        float ballY = ball->getY();
+        if (playerY < ballY) {
+            moveDown();
+        }
+        else if (playerY > ballY) {
+            moveUp();
+        }
+        
+        // Check if any player on this stick is aligned with the ball
+        bool alignWithBall = fabs(players[nearestPlayerIndex]->getX() - ball->getX()) <= ball->getRadius() * 2;
+
+        // If aligned with the ball and cooldown is over, attempt to kick it
+        if (alignWithBall && cdA == 0) {
+            kickBallForward();
+            cdA += 48; // Set kick duration
+        }
+    }
+
+    // Update kick duration
+    if (cdA > 0) {
+        cdA--;
+    }
+}
+
+
 void Stick::controlStick(const Uint8* keys) {
 	if (whoControlling) {
 		if (isControlled) {

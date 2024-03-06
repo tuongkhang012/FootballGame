@@ -6,6 +6,7 @@
 #include "Player.h"
 #include <vector>
 #include <memory>
+#include "Ball.h"
 
 class Stick{
 	friend class Player;
@@ -13,6 +14,7 @@ public:
 	Stick(int x, int numberOfPlayers, bool whoControlling, const std::vector<SDL_Texture*>& sprites, int id);
 	~Stick();
 	void drawStick(SDL_Renderer* renderer);
+	void AIcontrolStick(Ball* ball);
 	void controlStick(const Uint8* keys);
 	void moveUp();
 	void moveDown();
