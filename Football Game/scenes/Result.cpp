@@ -79,7 +79,7 @@ void Result::render(SDL_Window* window, SDL_Renderer* renderer) {
 	bool titlePressed = this->titleButton->draw(renderer);
 
 	if (rematchPressed) {
-		game_manager->changeState(new MainGame());
+		game_manager->changeState(new MainGame(false));
 	}
 	if (titlePressed) {
 		game_manager->changeState(new MainMenu());

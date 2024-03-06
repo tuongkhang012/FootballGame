@@ -4,16 +4,19 @@
 #include "../GameManager.h"
 
 MainMenu::MainMenu() {
-	this->startButton = new Button(SCREENWIDTH / 2 - 64, 350, 128, 42, 5, 5,
-		"START", terminalFont, black, white, teal, blue);
-	this->quitButton = new Button(SCREENWIDTH / 2 - 50, 450, 100, 42, 5, 5,
+	this->P1Button = new Button(SCREENWIDTH / 2 - 32, 300, 50, 42, 5, 5,
+		"P1", terminalFont, black, white, teal, blue);
+	this->P2Button = new Button(SCREENWIDTH / 2 - 32, 350, 50, 42, 5, 5,
+		"P2", terminalFont, black, white, teal, blue);
+	this->quitButton = new Button(SCREENWIDTH / 2 - 50, 400, 100, 42, 5, 5,
 		"QUIT", terminalFont, black, white, teal, blue);
 }
 
 MainMenu::~MainMenu() {
-	if (this->startButton != nullptr)
-		delete this->startButton;
-
+	if (this->P1Button != nullptr)
+		delete this->P1Button;
+	if (this->P2Button != nullptr)
+		delete this->P2Button;
 	if (this->quitButton != nullptr)
 		delete this->quitButton;
 
@@ -57,11 +60,15 @@ void MainMenu::render(SDL_Window* window, SDL_Renderer* renderer) {
 	SDL_FreeSurface(textSurface);
 	SDL_DestroyTexture(textTexture);
 
-	bool startPressed = this->startButton->draw(renderer);
+	bool P1Pressed = this->P1Button->draw(renderer);
+	bool P2Pressed = this->P2Button->draw(renderer);
 	bool quitPressed = this->quitButton->draw(renderer);
 
-	if (startPressed) {
-		game_manager->changeState(new MainGame());
+	if (P1Pressed) {
+		game_manager->changeState(new MainGame(false));
+	}
+	if (P2Pressed) {
+		game_manager->changeState(new MainGame(true));
 	}
 	if (quitPressed) {
 		game_manager->stop();

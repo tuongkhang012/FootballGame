@@ -17,7 +17,8 @@ public:
 	void render(SDL_Window* window, SDL_Renderer* renderer);
 	void setGameManager(Game* game) { game_manager = game; }
 private:
-	Button* startButton = nullptr;
+	Button* P1Button = nullptr;
+	Button* P2Button = nullptr;
 	Button* quitButton = nullptr;
 	Game* game_manager = nullptr;
 };
