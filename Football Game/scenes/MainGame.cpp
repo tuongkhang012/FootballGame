@@ -157,7 +157,7 @@ void MainGame::update(SDL_Window* window, SDL_Renderer* renderer) {
 		}
 
 		//Game finished
-		if (score1 == 3 || score2 == 3) {
+		if (score1 >= 3 || score2 >= 3) {
 			Mix_PlayChannel(-1, whistleSound, 0);
 			Mix_PlayChannel(-1, whistleSound, 0);
 			isFinished = true;
@@ -300,10 +300,10 @@ void MainGame::render(SDL_Window* window, SDL_Renderer* renderer) {
 
 	//Change state
 	if (isDone) {
-		if (score1 == 3) {
+		if (score1 >= 3) {
 			game_manager->changeState(new Result(true));
 		}
-		else if (score2 == 3) {
+		else if (score2 >= 3) {
 			game_manager->changeState(new Result(false));
 		}
 	}

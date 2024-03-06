@@ -70,7 +70,7 @@ void Result::update(SDL_Window* window, SDL_Renderer* renderer) {
 }
 
 void Result::render(SDL_Window* window, SDL_Renderer* renderer) {
-	SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255);
+	SDL_SetRenderDrawColor(renderer, 0,0,0, 255);
 	SDL_RenderClear(renderer);
 
 	renderScore(renderer);
